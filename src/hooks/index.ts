@@ -1,1 +1,1 @@
-export {default as useCharacters} from './useCharacters';
+export {default as useCharacters} from './store/useCharacters';

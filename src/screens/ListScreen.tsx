@@ -1,44 +1,63 @@
 import React, {useEffect} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import {
+  ActivityIndicator,
+  FlatList,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  View,
+} from 'react-native';
 import {CharacterRow} from '../components/organisms';
-import {useCharacters} from '../hooks';
-import {RootState} from '../store';
-import {charactersSlice} from '../store/charactersSlice';
 import {Character} from '../types';
+import {useCharacters} from '../hooks';
+import {Colors} from '../resources';
+import {Header} from '../components/templates';
 
 const ListScreen = () => {
-  const {characters} = useSelector((state: RootState) => state.characters);
-  const dispatch = useDispatch();
-  //const {characters, error, loading, getCharacters} = useCharacters();
+  const {items, loading, getCharacters} = useCharacters();
 
   useEffect(() => {
-    dispatch(charactersSlice());
-  }, [dispatch]);
+    getCharacters();
+  }, [getCharacters]);
 
   const renderCharacters = (character: {item: Character}) => {
     return <CharacterRow character={character.item} key={character.item.id} />;
   };
 
   return (
-    <View style={styles.container}>
-      {/* {loading ? (
-        <Text>Loading...</Text>
-      ) : ( */}
-      <FlatList
-        keyExtractor={(item, _index) => `${item.id}`}
-        data={characters}
-        renderItem={renderCharacters}
+    <SafeAreaView style={styles.container}>
+      <StatusBar
+        animated={true}
+        barStyle={'light-content'}
+        showHideTransition={'slide'}
+        hidden={false}
       />
-      {/* )} */}
-    </View>
+      {loading ? (
+        <View style={styles.center}>
+          <ActivityIndicator size="large" color={Colors.white} />
+        </View>
+      ) : (
+        <Header title={'DC Characters'}>
+          <FlatList
+            keyExtractor={(item, _index) => `${item.id}`}
+            data={items}
+            renderItem={renderCharacters}
+          />
+        </Header>
+      )}
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
+    backgroundColor: Colors.backgroundDark,
+  },
+  center: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 export default ListScreen;
