@@ -1,4 +1,4 @@
 # Crediverso
 
-![iOS](assets/ios.png 'iOS')
-![Android](assets/android.png 'Android')
+<img src="assets/ios.png" width="50%"> 
+<img src="assets/android.png" width="50%"> 
