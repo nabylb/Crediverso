@@ -10,7 +10,6 @@ interface CharacterProps {
 }
 
 const CharacterRow = ({character}: CharacterProps) => {
-  console.log(character);
   return (
     <View style={styles.container}>
       <View style={styles.header}>

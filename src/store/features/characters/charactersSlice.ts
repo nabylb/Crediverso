@@ -62,6 +62,6 @@ export const charactersSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const {addCharacters} = charactersSlice.actions;
+export const {addCharacters, resetCharacters} = charactersSlice.actions;
 
 export default charactersSlice.reducer;

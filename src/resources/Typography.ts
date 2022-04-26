@@ -20,7 +20,7 @@ const Typography: FontType = {
   },
   body: {
     fontFamily: 'Roboto-Regular',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'normal',
     fontStyle: 'normal',
     letterSpacing: 0.44,

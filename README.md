@@ -1,3 +1,4 @@
 # Crediverso
 
-![alt text](assets/ios.png 'iOS')
+![iOS](assets/ios.png 'iOS')
+![Android](assets/android.png 'Android')
